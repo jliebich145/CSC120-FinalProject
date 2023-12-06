@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StarfallGame {
@@ -5,8 +6,9 @@ public class StarfallGame {
     Scanner input;
     String nextPhrase;
     String action;
-    Commands gameCommands;
-    SetUp gameSetUp;
+    Commands GameCommands;
+    SetUp GameSetUp;
+    ArrayList<Constellation> constellations;
 
     public StarfallGame(){
         System.out.println("Welcome to Starfall! Game Loading...");
@@ -14,8 +16,10 @@ public class StarfallGame {
         this.input = new Scanner(System.in);
         this.nextPhrase = "Test Phrase. Please Respond:";
         this.action = "Test Fail";
-        this.gameCommands = new Commands();
-        this.gameSetUp = new SetUp();
+        this.GameCommands = new Commands();
+        this.GameSetUp = new SetUp();
+        this.constellations = this.GameSetUp.ConstellationsAndStars(); 
+        System.out.println(constellations);
         System.out.println("Game Loaded! Ready to Play!");
     }
 
@@ -23,7 +27,7 @@ public class StarfallGame {
         System.out.println(nextPhrase);
         this.action = this.input.nextLine();
         if(this.action.startsWith("!")){
-            this.gameCommands.use(action);
+            this.GameCommands.use(action);
         }
         return this.gameOver;
     }
