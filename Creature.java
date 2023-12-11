@@ -11,10 +11,9 @@ public class Creature {
     protected int Defense;
     protected Inventory inventory;
     protected Boolean alive;
-    protected Star location;
 
     /* Constructor */
-    public Creature(String name, int hp, int baseAttack, int baseDefense, Inventory inventory){
+    public Creature(String name, int hp, int baseAttack, int baseDefense){
         this.name = name;
         this.currenthp = hp;
         this.maxhp = hp;
@@ -22,8 +21,12 @@ public class Creature {
         this.Attack = baseAttack;
         this.baseDefense = baseDefense;
         this.Defense = baseDefense;
-        this.inventory = inventory;
+        this.inventory = new Inventory();
         this.alive = true;
+    }
+
+    public Creature(){
+        this("", 0, 0, 0);
     }
 
     public int attack(){
@@ -53,10 +56,6 @@ public class Creature {
             amountHealed -= 1;
         }
         return currenthp;
-    }
-
-    public void changeLocation(Star location){
-        this.location = location;
     }
     
 }

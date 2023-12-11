@@ -1,17 +1,23 @@
 import java.util.Random;
 
 public class BlueStar extends Star{
+    /* Class Attribute */
     private int heal;
 
+    /* Constructor */
     public BlueStar(String name){
         super(name);
         Random rand = new Random();
-        this.heal = rand.nextInt(10) + 5;
+        this.heal = rand.nextInt(10) + 5; 
     }
 
-    public Creature Enter(Creature pc){
-        pc.changeLocation(this);
-        System.out.println("Welcome to " + this.name + "!");
+    /**
+     * Healing when entering a blue star
+     * @param pc
+     */
+    public void Enter(Player pc){
+        System.out.println("Entering " + this.name + "...");
+        System.out.println(this.toString());
         if(this.visited = true){
             System.out.println("You have already been healed on " + this.name);
         } else{
@@ -20,7 +26,13 @@ public class BlueStar extends Star{
             int health = pc.heal(heal);
             System.out.println("You have " + health + " health.");
         }
-        return pc;
+    }
+
+    public String toString(){
+        if(this.light == true){
+            return this.name + " is glowing! Nothing more to do here!";
+        }
+        return this.name + " is a very hot blue star. Gather stardust to bring it back to light!";
     }
     
 }

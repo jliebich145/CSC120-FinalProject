@@ -318,5 +318,16 @@ public class SetUp {
         return constellations;
     }
 
+    /**
+     * Initializes the player character
+     * @param name name of the character
+     * @return Player object
+     */
+    public Player PlayerCharacter(String name){
+        Inventory pcInv = new Inventory();
+        Player pc = new Player(name, 25, 2, 3, pcInv);
+        return pc;
+    }
+
     
 }

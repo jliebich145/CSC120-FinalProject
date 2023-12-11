@@ -5,29 +5,35 @@ public class StarfallGame {
     boolean gameOver;
     Scanner input;
     String nextPhrase;
-    String action;
+    String response;
     Commands GameCommands;
     SetUp GameSetUp;
     ArrayList<Constellation> constellations;
+    Player playerCharacter;
 
     public StarfallGame(){
         System.out.println("Welcome to Starfall! Game Loading...");
         this.gameOver = false;
         this.input = new Scanner(System.in);
-        this.nextPhrase = "Test Phrase. Please Respond:";
-        this.action = "Test Fail";
+        System.out.println("Please enter your name: ");
+        this.response = this.input.nextLine();
+        this.nextPhrase = "INTRO STUFF!!!";
         this.GameCommands = new Commands();
         this.GameSetUp = new SetUp();
         this.constellations = this.GameSetUp.ConstellationsAndStars(); 
+        System.out.println();
+        this.playerCharacter = this.GameSetUp.PlayerCharacter(this.response);
         System.out.println(constellations);
         System.out.println("Game Loaded! Ready to Play!");
     }
 
     public boolean dialogue(){
         System.out.println(nextPhrase);
-        this.action = this.input.nextLine();
-        if(this.action.startsWith("!")){
-            this.GameCommands.use(action);
+        this.response = this.input.nextLine();
+        if(response.equals("1") || response.equals("2") || response.equals("3") || response.equals("4") ||response.equals("5")){
+            // RESPONSE NUMBER THINGY
+        } else{
+            this.GameCommands.use(response, this.playerCharacter);
         }
         return this.gameOver;
     }
