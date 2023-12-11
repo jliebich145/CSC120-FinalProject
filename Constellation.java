@@ -11,7 +11,11 @@ public class Constellation {
         this.stars = stars;
     }
 
+    public ImmutableGraph<Star> getStars(){
+        return this.stars;
+    }
+
     public String toString(){
-        return "Constellation: " + this.name + " Stars in Constellation: " + this.stars;
+        return this.name;
     }
 }

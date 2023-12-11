@@ -57,5 +57,9 @@ public class Creature {
         }
         return currenthp;
     }
+
+    public String toString(){
+        return this.name + " has " + this.currenthp + " health remaining";
+    }
     
 }

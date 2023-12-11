@@ -2,6 +2,7 @@ public class Player extends Creature {
 
     /*Class Attributes */
     protected Star location;
+    protected Constellation constellation;
     
     /*Constructor */
     public Player(String name, int hp, int baseAttack, int baseDefense, Inventory inventory){
@@ -18,5 +19,12 @@ public class Player extends Creature {
     public void enterStar(Star location){
         this.location = location;
         this.location.enter(this);
+    }
+
+    /* Change constellation */
+    public void enterConstellation(Constellation constellation){
+        this.location = null;
+        this.constellation = constellation;
+        System.out.println("Travelling to " + constellation);
     }
 }

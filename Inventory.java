@@ -9,7 +9,7 @@ public class Inventory {
         this.items.put("stardust", 0);
         this.items.put("weapons", 0);
         this.items.put("armor", 0);
-        this.items.put("trinket", 0);
+        this.items.put("trinkets", 0);
     }
 
     /* Accessors */

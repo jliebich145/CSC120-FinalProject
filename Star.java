@@ -26,12 +26,13 @@ public class Star {
      * Allows a character to fight enemies
      * @param pc
      */
-    public void attack(Player pc){
+    public boolean attack(Player pc, Commands command){
         if(this.light == true){
             System.out.println("No enemies to attack on " + this.name);
         } else{
             System.out.println(this.name + " is dark. Light this location to reveal enemies.");
         }
+        return false;
     }
 
     /**

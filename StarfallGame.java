@@ -1,9 +1,7 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class StarfallGame {
     boolean gameOver;
-    Scanner input;
     String nextPhrase;
     String response;
     Commands GameCommands;
@@ -14,45 +12,46 @@ public class StarfallGame {
     public StarfallGame(){
         System.out.println("Welcome to Starfall! Game Loading...");
         this.gameOver = false;
-        this.input = new Scanner(System.in);
+        this.GameCommands = new Commands();
         System.out.println("Please enter your name: ");
-        this.response = this.input.nextLine();
-        this.nextPhrase = "INTRO STUFF!!!";
+        this.response = this.GameCommands.input();
         this.GameCommands = new Commands();
         this.GameSetUp = new SetUp();
         this.constellations = this.GameSetUp.ConstellationsAndStars(); 
         System.out.println();
         this.playerCharacter = this.GameSetUp.PlayerCharacter(this.response);
-        System.out.println(constellations);
         System.out.println("Game Loaded! Ready to Play!");
+        this.nextPhrase = "INTRO STUFF!!!";
+        System.out.println(this.nextPhrase);
+        this.nextPhrase = "What would you like to do next? (Hint: enter \"HELP\" for list of commands!)";
     }
 
+    /* Gameplay sequence */
     public boolean dialogue(){
         System.out.println(nextPhrase);
-        this.response = this.input.nextLine();
-        if(response.equals("1") || response.equals("2") || response.equals("3") || response.equals("4") ||response.equals("5")){
-            // RESPONSE NUMBER THINGY
-        } else{
-            this.GameCommands.use(response, this.playerCharacter);
-        }
+        this.response = this.GameCommands.input();
+        this.gameOver = this.checkCommands(response);
         return this.gameOver;
     }
+
 
     /* Ends Game */
     public void endGame(){
         this.gameOver = true;
     }
 
+    /* Sends response to check commands */
+    public boolean checkCommands(String response){
+        this.gameOver = this.GameCommands.use(response, this.playerCharacter, this);
+        return this.gameOver;
+    }
+
 
     public static void main(String[] args) {
         StarfallGame g = new StarfallGame();
         //Welcome, etc.
-        while(!g.gameOver){
-            //get user input
+        while(g.gameOver == false){
             g.dialogue();
-            //respond
-            //check for gameOver
-            g.endGame(); //REMOVE LATER (preventing infinite loop while testing set-up)
         }
         System.out.println("Game Ended. Goodbye!");
     }
