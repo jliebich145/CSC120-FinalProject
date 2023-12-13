@@ -11,7 +11,7 @@ public class StarLoot extends Inventory {
             this.items.replace("stardust", stardust);
         }
         for(int i = 0; i < itemRoll; i++){
-            int item = rand.nextInt(6);
+            int item = rand.nextInt(5)+1;
             if(item == 1){
                 this.items.replace("weapons", (this.items.get("weapons") + 1));
             }
@@ -29,7 +29,7 @@ public class StarLoot extends Inventory {
     }
 
     public String toString(){
-        return "Stardust: " + this.items.get("stardust") + "\nWeapons " + this.items.get("weapons") + "\nArmor " + this.items.get("armor") + "\nTrinkets " + this.items.get("trinkets");
+        return "Stardust: " + this.items.get("stardust") + "\nWeapons: " + this.items.get("weapons") + "\nArmor: " + this.items.get("armor") + "\nTrinkets: " + this.items.get("trinkets");
     }
     
 }

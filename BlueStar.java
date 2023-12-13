@@ -7,6 +7,7 @@ public class BlueStar extends Star{
     /* Constructor */
     public BlueStar(String name){
         super(name);
+        this.type = "(Blue Star)";
         Random rand = new Random();
         this.heal = rand.nextInt(10) + 5; 
     }
@@ -15,10 +16,10 @@ public class BlueStar extends Star{
      * Healing when entering a blue star
      * @param pc
      */
-    public void Enter(Player pc){
+    public void enter(Player pc){
         System.out.println("Entering " + this.name + "...");
         System.out.println(this.toString());
-        if(this.visited = true){
+        if(this.visited == true){
             System.out.println("You have already been healed on " + this.name);
         } else{
             this.visited = true;

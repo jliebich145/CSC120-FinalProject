@@ -9,10 +9,11 @@ public class Nebula extends Star{
     /* Constructor */
     public Nebula(String name){
         super(name);
+        this.type = "(Nebula)";
         Random rand = new Random();
         this.heal = rand.nextInt(10) + 5; 
         int stardust = rand.nextInt(2) + 2;
-        int loot = rand.nextInt(3);
+        int loot = rand.nextInt(2)+1;
         this.nebulaLoot = new StarLoot(stardust, loot); 
         this.looted = false;
     }
@@ -21,10 +22,10 @@ public class Nebula extends Star{
      * Entering a nebula heals you
      * @param pc
      */
-    public void Enter(Player pc){
+    public void enter(Player pc){
         System.out.println("Entering " + this.name + "...");
         System.out.println(this.toString());
-        if(this.visited = true){
+        if(this.visited == true){
             System.out.println("You have already been healed on " + this.name);
         } else{
             this.visited = true;
@@ -38,11 +39,11 @@ public class Nebula extends Star{
      * Find and add treasure to inventory
      * @param pc 
      * */
-    public void Loot(Player pc){
+    public void loot(Player pc){
         if(this.light == true){
             this.looted = true;
             System.out.println("You find: \n" + this.nebulaLoot.toString());
-            pc.inventory.addLoot(nebulaLoot);
+            pc.pickUp(nebulaLoot);
         } else{
             System.out.println(this.name + " is dark. Light this nebula to reveal loot.");
         }

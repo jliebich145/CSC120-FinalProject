@@ -3,12 +3,14 @@ public class Star {
     protected String name;
     protected boolean visited;
     protected boolean light;
+    protected String type;
 
     /* Constructor */
     public Star(String name){
         this.name = name;
         this.visited = false;
         this.light = false;
+        this.type = "(Star)";
     }
 
     /*Accessors */
@@ -16,6 +18,11 @@ public class Star {
         return light;
     }
 
+    public String getType(){
+        return type;
+    }
+
+    /* Entering the star */
     public void enter(Player pc){
         System.out.println("Entering " + this.name + "...\n" + this.toString());
         this.visited = true;
@@ -60,7 +67,7 @@ public class Star {
         if(stardust >= 25){
             pc.inventory.removeStardust(25);
             this.light = true;
-            System.out.println("You channel 25 stardust into " + this.name + " and its power is rejuvinated");
+            System.out.println("You channel 50 stardust into " + this.name + " and its power is rejuvinated");
         } else{
             System.out.println("You do not have enough stardust to light " + this.name + ". Explore glowing locations to find more!");
         }

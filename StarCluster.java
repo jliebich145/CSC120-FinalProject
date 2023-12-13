@@ -8,6 +8,7 @@ public class StarCluster extends Star{
     /* Constructor */
     public StarCluster(String name){
         super(name);
+        this.type = "(Star Cluster)";
         Random rand = new Random();
         int stardust = rand.nextInt(5) + 4;
         this.clusterStardust = new StarLoot(stardust);
@@ -18,11 +19,11 @@ public class StarCluster extends Star{
      * Find and add treasure to inventory
      * @param pc 
      * */
-    public void Loot(Player pc){
+    public void loot(Player pc){
         if(this.light == true){
             this.looted = true;
             System.out.println("You find " + this.clusterStardust.checkStardust() + " stardust!");
-            pc.inventory.addLoot(clusterStardust);
+            pc.pickUp(clusterStardust);
         } else{
             System.out.println(this.name + " is dark. Light this star cluster to reveal loot.");
         }

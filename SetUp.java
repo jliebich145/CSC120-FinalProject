@@ -2,16 +2,12 @@ import java.util.ArrayList;
 import com.google.common.graph.*;
 
 public class SetUp {
-    Boolean done;
-    Boolean constellationsInitialized;
 
     public SetUp(){
-    this.done = false;
-    this.constellationsInitialized = false;
     }
 
     /* Initializes the Constellation and Star classes required for the game */
-    public ArrayList<Constellation> ConstellationsAndStars(){
+    public ArrayList<Constellation> constellationsAndStars(){
         ArrayList<Constellation> constellations = new ArrayList<>();
 
         // Initialize the constellation Ursa Major
@@ -313,8 +309,6 @@ public class SetUp {
         Constellation leo = new Constellation("Leo", leoStars);
         constellations.add(leo);
 
-        this.constellationsInitialized = true;
-
         return constellations;
     }
 
@@ -323,9 +317,9 @@ public class SetUp {
      * @param name name of the character
      * @return Player object
      */
-    public Player PlayerCharacter(String name){
+    public Player playerCharacter(String name){
         Inventory pcInv = new Inventory();
-        Player pc = new Player(name, 25, 2, 3, pcInv);
+        Player pc = new Player(name, 25, 3, 0, pcInv);
         return pc;
     }
 

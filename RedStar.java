@@ -4,6 +4,7 @@ public class RedStar extends Star{
 
     public RedStar(String name){
         super(name);
+        this.type = "(Red Star)";
         this.beat = false;
         this.boss = new Monster(4, "The Boss");
     }
@@ -34,10 +35,10 @@ public class RedStar extends Star{
                     System.out.println("Please input \"attack\" or \"flee\" ");
                 }
             }
-            alive = this.boss.attacked(pc.Attack);
+            alive = this.boss.attacked(pc.attack());
             if (alive == true){
                 System.out.println("Boss attacking...");
-                alive = pc.attacked(this.boss.Attack);
+                alive = pc.attacked(this.boss.attack());
                 if(alive == false){
                     System.out.println("You Died.");
                     return true;
@@ -46,7 +47,8 @@ public class RedStar extends Star{
             System.out.println("You have " + pc.currenthp + " health remaining");  
         }
         System.out.println("Congratulations! You defeated the boss");
-        pc.inventory.addLoot(this.boss.inventory);
+        pc.pickUp(this.boss.inventory);
+        this.beat = true;
         System.out.println("You receive: " + this.boss.inventory.toString() + " for defeating the boss!");
         return false;
     }

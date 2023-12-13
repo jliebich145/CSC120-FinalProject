@@ -9,6 +9,7 @@ public class YellowStar extends Star{
     /* Constructor */
     public YellowStar(String name){
         super(name);
+        this.type = "(Yellow Star)";
         this.beat = false;
         this.enemies = new ArrayList<>();
         Random rand = new Random();
@@ -98,10 +99,10 @@ public class YellowStar extends Star{
                 }
             }
             currentMonster = this.enemies.get(attackEnemy - 1);
-            alive = currentMonster.attacked(pc.Attack);
+            alive = currentMonster.attacked(pc.attack());
             if (alive == false){
                 System.out.println("Monster killed!");
-                pc.inventory.addLoot(currentMonster.inventory);
+                pc.pickUp(currentMonster.inventory);
                 System.out.println("You receive: " + currentMonster.inventory.toString() + " for defeating this monster!");
                 this.enemies.remove(attackEnemy-1);
             }
@@ -109,7 +110,7 @@ public class YellowStar extends Star{
                 System.out.println("Enemies attacking...");
                 for(int i = 0; i < this.enemies.size(); i++){
                     currentMonster = this.enemies.get(i);
-                    alive = pc.attacked(currentMonster.Attack);
+                    alive = pc.attacked(currentMonster.attack());
                     if(alive == false){
                         System.out.println("You Died.");
                         return true;
@@ -119,6 +120,7 @@ public class YellowStar extends Star{
             System.out.println("You have " + pc.currenthp + " health remaining");  
         }
         System.out.println("Congratulations! You defeated all the enemies");
+        this.beat = true;
         return false;
     }
 

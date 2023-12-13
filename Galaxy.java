@@ -8,9 +8,10 @@ public class Galaxy extends Star{
     /* Constructor */
     public Galaxy(String name){
         super(name);
+        this.type = "(Galaxy)";
         Random rand = new Random();
         int stardust = rand.nextInt(10) + rand.nextInt(10) + 10;
-        int loot = rand.nextInt(5) + 3;
+        int loot = rand.nextInt(4) + 4;
         this.galaxyLoot = new StarLoot(stardust, loot); 
         this.looted = false;
     }
@@ -19,11 +20,11 @@ public class Galaxy extends Star{
      * Find and add treasure to inventory
      * @param pc 
      * */
-    public void Loot(Player pc){
+    public void loot(Player pc){
         if(this.light == true){
             this.looted = true;
             System.out.println("You find: \n" + this.galaxyLoot.toString());
-            pc.inventory.addLoot(galaxyLoot);
+            pc.pickUp(galaxyLoot);
         } else{
             System.out.println(this.name + " is dark. Light this galaxy to reveal loot.");
         }
